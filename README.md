@@ -20,3 +20,7 @@ common start time, start station etc.
 - https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_string.html
 - https://betterprogramming.pub/how-to-indefinitely-request-user-input-until-valid-in-python-388a7c85aa6e
 - https://towardsdatascience.com/extract-rows-columns-from-a-dataframe-in-python-r-678e5b6743d6
+
+### Version History
+
+v1.0 - 15 August 2021
