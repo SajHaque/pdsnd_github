@@ -26,15 +26,15 @@ def get_filters():
         city=input('Enter a city from chicago, new york city or washington:')
         if city.lower() in ['chicago','new york city','washington']:
             break
-        else: 
+        else:
             print("Oops! Invalid Input. Please enter a city from: chicago, new_york_city or washington")
-    
+
     # TO DO: get user input for month (all, january, february, ... , june)
     while True:
         month=input('Enter a month from Jan Feb Mar Apr May Jun or all for no month filter:')
         if month.title() in ['All','Jan','Feb','Mar','Apr','May','Jun']:
             break
-        else: 
+        else:
             print("Oops! Invalid Input. Please enter a month from Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec or all for no month filter")
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
@@ -42,7 +42,7 @@ def get_filters():
         day=input('Enter a day of the week from Monday Tuesday Wednesday Thursday Friday Saturday Sunday or all for no week filter:')
         if day.title() in ['All','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']:
             break
-        else: 
+        else:
             print("Oops! Invalid Input. Please enter a day from: Monday Tuesday Wednesday Thursday Friday Satruday Sunday or all for no week filter")
 
 
@@ -67,16 +67,16 @@ def load_data(city, month, day):
     df['day_of_week'] = df['Start Time'].dt.weekday_name
     df['start_hour']=df['Start Time'].dt.hour
     df['Journey']=df['Start Station'] + ' to ' + df['End Station']
-    
+
     if month != 'all':
         months = ['Jan','Feb','Mar','Apr','May','Jun']
         month = months.index(month.title())+1
-        
+
         df=df[df['month'] == month]
-    
+
     if day != 'all':
         df=df[df['day_of_week']==day.title()]
-       
+
     return df
 
 
@@ -92,14 +92,14 @@ def time_stats(df, month, day):
         month_list=['January','February','March','April','May','June']
         month_name=month_list[common_month-1]
         print('The most common month is: {}'.format(month_name))
-       
-          
+
+
 
     # TO DO: display the most common day of week
     if day == 'all':
         common_day= df['day_of_week'].mode()[0]
         print('The most common day is: {}'.format(common_day))
-        
+
 
     # TO DO: display the most common start hour
     common_hour=df['start_hour'].mode()[0]
@@ -162,7 +162,7 @@ def user_stats(df,city):
     # TO DO: Display counts of gender
     if city =='washington':
         print('Gender data not available for washington')
-    else: 
+    else:
         gender_count = df['Gender'].value_counts().to_string()
         print('Gender counts:\n',gender_count,'\n')
 
@@ -173,15 +173,16 @@ def user_stats(df,city):
         earliest_birth_year=df['Birth Year'].min()
         latest_birth_year=df['Birth Year'].max()
         frequent_birth_year=df['Birth Year'].mode()[0]
-        
+
         print('Earliest year of birth is: {}'.format(int(earliest_birth_year)))
         print('Most recent year of birth is: {}'.format(int(latest_birth_year)))
         print('Most common year of birth is: {}'.format(int(frequent_birth_year)))
-        
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 def raw_data(df):
+    """Displays raw data when prompted by the user"""
     row_index1=0
     row_index2=5
     while True:
@@ -196,8 +197,8 @@ def raw_data(df):
             print(display)
         elif raw_prompt not in ['n','y']:
             print('Please enter y (yes) or n (no)')
-            
-       
+
+
 def main():
     while True:
         city, month, day = get_filters()
