@@ -16,6 +16,10 @@ common start time, start station etc.
  - washington.csv
  - new_york_city.csv
 
+### Software Required
+- Python 3, NumPy and pandas
+- A terminal application
+
 ### Credits
 - https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_string.html
 - https://betterprogramming.pub/how-to-indefinitely-request-user-input-until-valid-in-python-388a7c85aa6e
